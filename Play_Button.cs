@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Play_Button : MonoBehaviour
-{
+{/*
     private GameObject Menu;
     private GameObject Levels;
 
@@ -22,9 +22,6 @@ public class Play_Button : MonoBehaviour
 
     void Start()
     {
-        //Rigidbody_Player = GetComponent<Rigidbody>();
-
-
         Menu = GameObject.Find("Menu");
         Levels = GameObject.Find("Levels");
 
@@ -105,4 +102,5 @@ public class Play_Button : MonoBehaviour
         Application.Quit();
         Debug.Log("Exiting");
     }
+    */
 }
