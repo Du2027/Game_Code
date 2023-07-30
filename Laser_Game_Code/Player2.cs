@@ -5,25 +5,24 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     private GameObject Cam;
-    private GameObject Player;
-    private Rigidbody rb_Player;
     private float pos_z;
     private float[] Force_Array = new float[3];
 
     public float speed;
     public float cam_offset;
-    public float horizontal_speed;
     public float y_force;
+    public float horizontal_speed;
 
     void Start()
     {
         Cam = GameObject.Find("Camera");
-        Player = GameObject.Find("Player2");
-        rb_Player = Player.GetComponent<Rigidbody>();
+        
     }
 
     void FixedUpdate()
-    {
+    {   if (GameObject.Find("Canvas").GetComponent<Menu_manager>().h_speed != horizontal_speed){
+            horizontal_speed = GameObject.Find("Canvas").GetComponent<Menu_manager>().h_speed;
+        }
         if (Input.GetKey("d")){
             Force_Array[0] = -horizontal_speed;
         }
@@ -37,9 +36,12 @@ public class Player2 : MonoBehaviour
         Force_Array[1] = y_force;
         Force_Array[2] = -speed;
 
-        rb_Player.AddForce(new Vector3(Force_Array[0],Force_Array[1],Force_Array[2]));
+        GameObject.Find("Player2").GetComponent<Rigidbody>().AddForce(new Vector3(Force_Array[0],Force_Array[1],Force_Array[2]));
 
-        pos_z = Player.transform.position.z + cam_offset;
-        Cam.transform.position = new Vector3(Cam.transform.position.x,Cam.transform.position.y,pos_z);
+        pos_z = GameObject.Find("Player2").transform.position.z + cam_offset;
+        
+    }
+    void LateUpdate(){
+        GameObject.Find("Camera").transform.position = new Vector3(GameObject.Find("Camera").transform.position.x,GameObject.Find("Camera").transform.position.y,pos_z);
     }
 }

@@ -15,6 +15,7 @@ public class Menu_manager : MonoBehaviour
     private int Button_pressed = 0;
     private GameObject Hard_txt;
     private TMP_Text txt;
+    public float h_speed;
 
     private void reset_obj(float Z_cord, GameObject Obj){
         Obj.transform.position = new Vector3(Obj.transform.position.x,Obj.transform.position.y,Z_cord);
@@ -22,6 +23,7 @@ public class Menu_manager : MonoBehaviour
 
     void Start()
     {
+        h_speed = this.GetComponentInChildren<Player2>().horizontal_speed;
         Hard_txt = GameObject.Find("Hard_activated");
         txt = Hard_txt.GetComponent<TextMeshProUGUI>();
 
@@ -89,8 +91,7 @@ public class Menu_manager : MonoBehaviour
         Button_pressed += 1;
         if (Button_pressed == 1){
             txt.text = "Hard Mode is active";
-            GameObject.Find("Canvas").GetComponent<Player2>().horizontal_speed = 600;
-            Debug.Log("hras");
+            h_speed = 500f;
         }
         else {
             Button_pressed = 0;
