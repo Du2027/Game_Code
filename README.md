@@ -1,4 +1,4 @@
-This Repo is for my other stuff
+This Repo is for my Code from Games
 
 
 Ideas for upcoming Games:
